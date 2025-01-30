@@ -5,13 +5,8 @@
     <title>Profilo Utente</title>
     </head>
     <body>
-        <a href="{{ url_for('logout') }}">Logout</a>
-        <h1>Benvenuto, {{ user_info['display_name'] }}!</h1>
-        {% if user_info['images'] %}
-        <img src="{{ user_info['images'][0]['url'] }}" width="200" alt="Immagine profilo">
-        {% endif %}
-        <h2>Le tue Playlist:</h2>
-        {% if playlists %}
+ 
+        {% if brani %}
         <table>
             <thead>
                 <tr>
@@ -22,18 +17,18 @@
                 </tr>
             </thead>
             <tbody>
-                {% for playlist in playlists %}
+                {% for brani in branis %}
                 <tr>
-                    <td>{{ playlist['name'] }}</td>
-                    <td>{{ playlist['tracks']['total'] }}</td>
+                    <td>{{ branis['name'] }}</td>
+                 
                     <td>
-                    {% if playlist['images'] %}
-                    <img src="{{ playlist['images'][0]['url'] }}" width="50" alt="Copertina playlist">
+                    {% if branis['images'] %}
+                    <img src="{{ branis['images'][0]['url'] }}" width="50" alt="Copertina playlist">
                     {% else %}
                     Nessuna immagine
                     {% endif %}
                     </td>
-                    <td><a href="/playlist/{{ playlist['id'] }}">Vedi Brani</a></td>
+      
                   
                 </tr>
             {% endfor %}
